@@ -1,16 +1,13 @@
 #!/usr/bin/env python
 # assignment 2
 
+import math
 import rospy
-import numpy as np
 from std_msgs.msg import Float32, String
 
 def callback(yaw_msg):
-	deg = round(rad2deg(yaw_msg),1)
+	deg = round(math.degrees(yaw_msg),1)
 	publisher.publish(output % (yaw_msg, deg))
-
-def rad2deg(rad):
-	return rad * 180 / np.pi
 
 # Initialize node
 rospy.init_node("echo_yaw_node")
@@ -24,5 +21,3 @@ rospy.Subscriber("/yaw", Float32, callback)
 
 # spin() keeps python from exiting until this node is stopped
 rospy.spin()
-	
-	
