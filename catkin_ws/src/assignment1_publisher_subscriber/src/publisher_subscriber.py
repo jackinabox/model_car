@@ -8,7 +8,7 @@ import rospy
 from std_msgs.msg import Float32, String
 
 def callback(yaw_msg):
-	deg = round(math.degrees(float(yaw_msg.data)),2)
+	deg = round(math.degrees(yaw_msg.data),2)
 	publisher.publish(String(output % (yaw_msg.data, deg)))
 
 # Initialize node
